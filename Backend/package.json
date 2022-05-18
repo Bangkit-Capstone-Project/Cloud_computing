@@ -1,0 +1,37 @@
+{
+  "name": "tanamin-webservice",
+  "version": "1.0.0",
+  "description": "This is backend service of tanamin application",
+  "main": "index.js",
+  "scripts": {
+    "start-prod": "NODE_ENV=production node ./src/server.js",
+    "start-dev": "nodemon ./src/server.js",
+    "migrate": "node-pg-migrate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bangkit-Capstone-Project/Cloud_computing.git"
+  },
+  "keywords": [
+    "Web-service"
+  ],
+  "author": "Shazi Awaludin (xharf)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bangkit-Capstone-Project/Cloud_computing/issues"
+  },
+  "homepage": "https://github.com/Bangkit-Capstone-Project/Cloud_computing#readme",
+  "dependencies": {
+    "@hapi/hapi": "^20.2.2",
+    "@hapi/jwt": "^2.1.1",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "joi": "^17.6.0",
+    "nanoid": "^3.3.4",
+    "node-pg-migrate": "^6.2.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
