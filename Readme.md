@@ -4,7 +4,7 @@
 
 <h1 align="center">Tanamin Web Service</h1>
 
-<center>
+<p align="center">
 
 [![CC Member](https://img.shields.io/github/contributors/Bangkit-Capstone-Project/Cloud_computing?color=blue)](#cc-member)
 [![Dependency](https://img.shields.io/node/v/@hapi/hapi)](#dependency)
@@ -12,7 +12,7 @@
 [![Pull Request](https://img.shields.io/github/issues-pr/Bangkit-Capstone-Project/Cloud_computing)](https://github.com/Bangkit-Capstone-Project/Cloud_computing/pulls)
 [![License](https://img.shields.io/github/license/Bangkit-Capstone-Project/Cloud_computing?color=blue)](https://github.com/Bangkit-Capstone-Project/Cloud_computing/blob/master/LICENSE)
 
-</center>
+</p>
 
 Tanamin Web Service is a web service that allows you to predict the disease of plant by uploading image of plant leaf. This service is under development and will be updated soon. First three features are available is Cassava leaves disease prediction, Rice leaves disease prediction and Vegetable types classification.
 
