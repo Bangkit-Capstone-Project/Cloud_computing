@@ -9,179 +9,78 @@
 [![Build Status](https://github.com/konvajs/konva/actions/workflows/test-browser.yml/badge.svg)](https://github.com/konvajs/konva/actions/workflows/test-browser.ym)
 [![Build Status](https://github.com/konvajs/konva/actions/workflows/test-node.yml/badge.svg)](https://github.com/konvajs/konva/actions/workflows/test-node.ym)[![CDNJS version](https://img.shields.io/cdnjs/v/konva.svg)](https://cdnjs.com/libraries/konva)
 
-Konva is an HTML5 Canvas JavaScript framework that enables high performance animations, transitions, node nesting, layering, filtering, caching, event handling for desktop and mobile applications, and much more.
+Tanamin Web Service is a web service that allows you to predict the disease of plant by uploading image of plant leaf. This service is under development and will be updated soon. First three features are available is Cassava leaves disease prediction, Rice leaves disease prediction and Vegetable types classification.
 
-You can draw things onto the stage, add event listeners to them, move them, scale them, and rotate them independently from other shapes to support high performance animations, even if your application uses thousands of shapes. Served hot with a side of awesomeness.
+The first thing you need to know is that this service is using authentication to access each service. You need to login to access the service. The login is using username and password. You can register on the registration service. Please don't spam the registration service because it will make the registration service slow. If you have some idea to secure this service, please contact me.
 
-This repository began as a GitHub fork of [ericdrowell/KineticJS](https://github.com/ericdrowell/KineticJS).
+> Base url of this service is: http://localhost:8080/
 
-- **Visit:** The [Home Page](http://konvajs.org/) and follow on [Twitter](https://twitter.com/lavrton)
-- **Discover:** [Tutorials](http://konvajs.org/docs), [API Documentation](http://konvajs.org/api)
-- **Help:** [StackOverflow](http://stackoverflow.com/questions/tagged/konvajs), [Discord Chat](https://discord.gg/8FqZwVT)
+The service available:
+
+- Authentications
+  <pre>POST /authentications</pre>
+  <pre>PUT  /authentications</pre>
+  <pre>DEL  /authentications</pre>
+
+- Users
+  <pre>GET  /users/{userId}</pre>
+  <pre>POST /users</pre>
+  <pre>PUT  /users/{userId}</pre>
+  <pre>DEL is not avalable now</pre>
+
+- Predictions
+  <pre>POST /predictions/cassava</pre>
+  <pre>POST /predictions/rice</pre>
+
+- History
+  <pre>GET  /histories</pre>
+  <pre>GET  /histories/{historyId}</pre>
+  <pre>POST /histories</pre>
+  <pre>DEL  /histories/{historyId}</pre>
+
+- Classifications
+  <pre>POST /classifications/vegetable</pre>
 
 # Quick Look
 
-```html
-<script src="https://unpkg.com/konva@8/konva.min.js"></script>
-<div id="container"></div>
-<script>
-  var stage = new Konva.Stage({
-    container: 'container',
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+# Authentications
 
-  // add canvas element
-  var layer = new Konva.Layer();
-  stage.add(layer);
+# Instructions
 
-  // create shape
-  var box = new Konva.Rect({
-    x: 50,
-    y: 50,
-    width: 100,
-    height: 50,
-    fill: '#00D2FF',
-    stroke: 'black',
-    strokeWidth: 4,
-    draggable: true,
-  });
-  layer.add(box);
+## X Service
 
-  // add cursor styling
-  box.on('mouseover', function () {
-    document.body.style.cursor = 'pointer';
-  });
-  box.on('mouseout', function () {
-    document.body.style.cursor = 'default';
-  });
-</script>
-```
+## Y service
 
-# Browsers support
+# Environment
 
-Konva works in all modern mobile and desktop browsers. A browser need to be capable to run javascript code from ES2015 spec. For older browsers you may need polyfills for missing functions.
-
-At the current moment `Konva` doesn't work in IE11 directly. To make it work you just need to provide some polyfills such as `Array.prototype.find`, `String.prototype.trimLeft`, `String.prototype.trimRight`, `Array.from`.
-
-# Loading and installing Konva
-
-Konva supports UMD loading. So you can use all possible variants to load the framework into your project:
-
-### Load Konva via classical `<script>` tag from CDN:
-
-```html
-<script src="https://unpkg.com/konva@8/konva.min.js"></script>
-```
-
-### Install with npm:
+In order to run this project, you need to configure the following environment variables:
 
 ```bash
-npm install konva --save
-```
-
-```javascript
-// The modern way (e.g. an ES6-style import for webpack, parcel)
-import Konva from 'konva';
-```
-
-#### Typescript usage
-
-Add DOM definitions into your `tsconfig.json`:
+A={YourA}
+B={YourB}
+C={YourC}
 
 ```
-{
-  "compilerOptions": {
-    "lib": [
-        "es6",
-        "dom"
-    ]
-  }
-}
-```
 
-### 3 Minimal bundle
+Then you can use the following image to create your own database:
 
-```javascript
-import Konva from 'konva/lib/Core';
-// Now you have a Konva object with Stage, Layer, FastLayer, Group, Shape and some additional utils function.
-// Also core currently already have support for drag&drop and animations.
-// BUT there are no shapes (rect, circle, etc), no filters.
+<a href="">
+  <img src="image/Tanamin%20Diagram-ERD.drawio.png" />
+</a>
 
-// but you can simply add anything you need:
-import { Rect } from 'konva/lib/shapes/Rect';
-// importing a shape will automatically inject it into Konva object
+<p align="center">Databases ERD</p>
 
-var rect1 = new Rect();
-// or:
-var shape = new Konva.Rect();
+# Testing
 
-// for filters you can use this:
-import { Blur } from 'konva/lib/filters/Blur';
-```
+This Web service uses Katalon Studio and Postman to test.
 
-### 4 NodeJS env
+- You can download the Postman documentation [here](https://www.getpostman.com/docs/).
 
-In order to run `konva` in nodejs environment you also need to install `canvas` package manually. Konva will use it for 2d canvas API.
-
-```bash
-npm install konva canvas
-```
-
-Then you can use the same Konva API and all Konva demos will work just fine. You just don't need to use `container` attribute in your stage.
-
-```js
-import Konva from 'konva';
-
-const stage = new Konva.Stage({
-  width: 500,
-  height: 500,
-});
-// then all regular Konva code will work
-```
-
-### CommonJS modules
-
-By default `Konva` is delivered as ES modules. Some environments may automatically take CommonJS version of `Konva`. If it doesn't work for you, try to use `cmj` version explicitly:
-
-```js
-const Konva = require('konva/cmj').default;
-```
-
-# Backers
-
-![https://simpleshow.com](https://avatars.githubusercontent.com/u/99720652?s=200&v=4 'https://simpleshow.com')
-![https://www.notably.ai/](https://avatars.githubusercontent.com/u/80046841?s=200&v=4 'https://www.notably.ai/')
-
-- [myposter GmbH](https://www.myposter.de/)
-- [queue.gg](https://queue.gg/)
-
-# Change log
-
-See [CHANGELOG.md](https://github.com/konvajs/konva/blob/master/CHANGELOG.md).
-
-## Building the Konva Framework
-
-To make a full build run `npm run build`. The command will compile all typescript files, combine then into one bundle and run minifier.
-
-## Testing
-
-Konva uses Mocha for testing.
-
-- If you need run test only one time run `npm run test`.
-- While developing it is easy to use `npm start`. Just run it and go to [http://localhost:8080/test/runner.html](http://localhost:8080/test/runner.html). The watcher will rebuild the bundle on any change.
-
-Konva is covered with hundreds of tests and well over a thousand assertions.
-Konva uses TDD (test driven development) which means that every new feature or bug fix is accompanied with at least one new test.
-
-## Generate documentation
-
-Run `npx gulp api` which will build the documentation files and place them in the `api` folder.
+If you want to contribute to this project, please contact me.
 
 # Pull Requests
 
-I'd be happy to review any pull requests that may better the Konva project,
-in particular if you have a bug fix, enhancement, or a new shape (see `src/shapes` for examples). Before doing so, please first make sure that all of the tests pass (`gulp lint test`).
+I'd be happy to review any pull requests that may better the TanamIn project, in particular if you have a bug fix, enhancement, or a new idea, you can contact us.
 
 ## Contributors
 
@@ -189,19 +88,8 @@ in particular if you have a bug fix, enhancement, or a new shape (see `src/shape
 
 #### Individuals
 
-<a href="https://github.com/Xharf"><img src=""></a>
+<a href="https://github.com/Bangkit-Capstone-Project/Cloud_computing/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Bangkit-Capstone-Project/Cloud_computing" />
+</a>
 
-#### Organizations
-
-Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/konva/contribute)]
-
-<a href="https://opencollective.com/konva/organization/0/website"><img src="https://opencollective.com/konva/organization/0/avatar.svg"></a>
-<a href="https://opencollective.com/konva/organization/1/website"><img src="https://opencollective.com/konva/organization/1/avatar.svg"></a>
-<a href="https://opencollective.com/konva/organization/2/website"><img src="https://opencollective.com/konva/organization/2/avatar.svg"></a>
-<a href="https://opencollective.com/konva/organization/3/website"><img src="https://opencollective.com/konva/organization/3/avatar.svg"></a>
-<a href="https://opencollective.com/konva/organization/4/website"><img src="https://opencollective.com/konva/organization/4/avatar.svg"></a>
-<a href="https://opencollective.com/konva/organization/5/website"><img src="https://opencollective.com/konva/organization/5/avatar.svg"></a>
-<a href="https://opencollective.com/konva/organization/6/website"><img src="https://opencollective.com/konva/organization/6/avatar.svg"></a>
-<a href="https://opencollective.com/konva/organization/7/website"><img src="https://opencollective.com/konva/organization/7/avatar.svg"></a>
-<a href="https://opencollective.com/konva/organization/8/website"><img src="https://opencollective.com/konva/organization/8/avatar.svg"></a>
-<a href="https://opencollective.com/konva/organization/9/website"><img src="https://opencollective.com/konva/organization/9/avatar.svg"></a>
+<p>Shazi Awaludin</p>
