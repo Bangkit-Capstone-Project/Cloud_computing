@@ -15,9 +15,14 @@ const AuthenticationsService = require('./services/postgres/AuthenticationsServi
 const TokenManager = require('./tokenize/TokenManager');
 const AuthenticationsValidator = require('./validator/authentications');
 
+const classifications = require('./api/classifications');
+const ClassificationsService = require('./services/googleai/ClassificationsService');
+const ClassificationValidator = require('./validator/classifications');
+
 const init = async () => {
   const usersService = new UsersService();
   const authenticationsService = new AuthenticationsService();
+  const classificationsService = new ClassificationsService();
 
   const server = new Hapi.Server({
     port: process.env.PORT,
@@ -37,7 +42,7 @@ const init = async () => {
   ]);
 
   // mendefinisikan strategy autentikasi jwt
-  server.auth.strategy('songsapp_jwt', 'jwt', {
+  server.auth.strategy('tanaminapp_jwt', 'jwt', {
     keys: process.env.ACCESS_TOKEN_KEY,
     verify: {
       aud: false,
@@ -68,6 +73,13 @@ const init = async () => {
         usersService,
         tokenManager: TokenManager,
         validator: AuthenticationsValidator,
+      },
+    },
+    {
+      plugin: classifications,
+      options: {
+        service: classificationsService,
+        validator: ClassificationValidator,
       },
     },
   ]);

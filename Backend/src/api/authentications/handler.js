@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
-const ClientError = require('../../exceptions/ClientError');
 const ErrorChecker = require('../../utils/ErrorChecker');
 
 class AuthenticationsHandler {

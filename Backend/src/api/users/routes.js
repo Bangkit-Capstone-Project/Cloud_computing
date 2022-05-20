@@ -19,7 +19,7 @@ const routes = (handler) => [
     path: '/users/{id}/profile-picture',
     handler: handler.updateProfilePictureHandler,
     options: {
-      auth: 'songsapp_jwt',
+      auth: 'tanaminapp_jwt',
     },
   },
 ];
