@@ -12,4 +12,16 @@ const mapClassificationsDBtoModel = ({
   createdAt:created_at
 });
 
-module.exports = { mapClassificationsDBtoModel };
+const mapDiseaseDBtoModel = ({
+  id,
+  name,
+  description,
+  image_url,
+}) => ({
+  id,
+  name,
+  description,
+  imageUrl: image_url,
+});
+
+module.exports = { mapClassificationsDBtoModel, mapDiseaseDBtoModel };

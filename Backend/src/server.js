@@ -19,10 +19,15 @@ const classifications = require('./api/classifications');
 const ClassificationsService = require('./services/googleai/ClassificationsService');
 const ClassificationValidator = require('./validator/classifications');
 
+const diseases = require('./api/Diseases');
+const DiseasesService = require('./services/postgres/DiseasesService');
+const DiseasesValidator = require('./validator/diseases');
+
 const init = async () => {
   const usersService = new UsersService();
   const authenticationsService = new AuthenticationsService();
   const classificationsService = new ClassificationsService();
+  const diseasesService = new DiseasesService();
 
   const server = new Hapi.Server({
     port: process.env.PORT,
@@ -80,6 +85,13 @@ const init = async () => {
       options: {
         service: classificationsService,
         validator: ClassificationValidator,
+      },
+    },
+    {
+      plugin: diseases,
+      options: {
+        service: diseasesService,
+        validator: DiseasesValidator,
       },
     },
   ]);
