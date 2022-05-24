@@ -36,8 +36,21 @@ const mapPlantDBtoModel = ({
   imageUrl: image_url,
 });
 
+const mapVegetableDBtoModel = ({
+  id,
+  name,
+  description,
+  image_url,
+}) => ({
+  id,
+  name,
+  description,
+  imageUrl: image_url,
+});
+
 module.exports = {
   mapClassificationsDBtoModel,
   mapDiseaseDBtoModel,
-  mapPlantDBtoModel
+  mapPlantDBtoModel,
+  mapVegetableDBtoModel
 };

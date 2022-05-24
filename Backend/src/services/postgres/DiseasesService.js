@@ -57,7 +57,7 @@ class DiseasesService {
 
    const result = await this._pool.query(query);
 
-    if (!result.rows[0].id) {
+    if (!result.rows.length) {
       throw new InvariantError('Disease gagal diedit');
     }
   }
