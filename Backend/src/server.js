@@ -23,11 +23,17 @@ const diseases = require('./api/Diseases');
 const DiseasesService = require('./services/postgres/DiseasesService');
 const DiseasesValidator = require('./validator/diseases');
 
+const plants = require('./api/Plants');
+const PlantsService = require('./services/postgres/PlantsService');
+const PlantsValidator = require('./validator/plants');
+
+
 const init = async () => {
   const usersService = new UsersService();
   const authenticationsService = new AuthenticationsService();
   const classificationsService = new ClassificationsService();
   const diseasesService = new DiseasesService();
+  const plantsService = new PlantsService();
 
   const server = new Hapi.Server({
     port: process.env.PORT,
@@ -92,6 +98,13 @@ const init = async () => {
       options: {
         service: diseasesService,
         validator: DiseasesValidator,
+      },
+    },
+    {
+      plugin: plants,
+      options: {
+        service: plantsService,
+        validator: PlantsValidator,
       },
     },
   ]);

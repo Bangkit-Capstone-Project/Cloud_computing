@@ -9,7 +9,7 @@ const mapClassificationsDBtoModel = ({
   accuracy,
   plantName: name,
   description,
-  createdAt:created_at
+  createdAt: created_at
 });
 
 const mapDiseaseDBtoModel = ({
@@ -24,4 +24,20 @@ const mapDiseaseDBtoModel = ({
   imageUrl: image_url,
 });
 
-module.exports = { mapClassificationsDBtoModel, mapDiseaseDBtoModel };
+const mapPlantDBtoModel = ({
+  id,
+  name,
+  description,
+  image_url,
+}) => ({
+  id,
+  name,
+  description,
+  imageUrl: image_url,
+});
+
+module.exports = {
+  mapClassificationsDBtoModel,
+  mapDiseaseDBtoModel,
+  mapPlantDBtoModel
+};
