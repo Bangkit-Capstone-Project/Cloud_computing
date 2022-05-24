@@ -3,7 +3,7 @@ const { Pool } = require('pg');
 const { mapClassificationsDBtoModel } = require('../../utils');
 
 class ClassificationsService{
-  constructor(collaborationsService) {
+  constructor() {
     if (process.env.NODE_ENV === 'production') {
       this._pool = new Pool({
         connectionString: process.env.PGURI,
@@ -14,7 +14,6 @@ class ClassificationsService{
     } else {
       this._pool = new Pool();
     }
-    this._collaborationsService = collaborationsService;
   }
 
   async getClassification(file, meta){
