@@ -35,6 +35,10 @@ const predictions = require('./api/predictions');
 const PredictionsService = require('./services/googleai/PredictionsService');
 const PredictionValidator = require('./validator/Predictions');
 
+const historys = require('./api/historys');
+const HistorysService = require('./services/postgres/HistorysService');
+const HistoryValidator = require('./validator/historys');
+
 const init = async () => {
   const usersService = new UsersService();
   const authenticationsService = new AuthenticationsService();
@@ -43,6 +47,7 @@ const init = async () => {
   const plantsService = new PlantsService();
   const vegetablesService = new VegetablesService();
   const predictionsService = new PredictionsService();
+  const historysService = new HistorysService();
 
   const server = new Hapi.Server({
     port: process.env.PORT,
@@ -130,6 +135,15 @@ const init = async () => {
         validator: VegetablesValidator,
       },
     },
+    {
+      plugin: historys,
+      options: {
+        historysService,
+        diseasesService,
+        plantsService,
+        validator: HistoryValidator,
+      },
+    }
   ]);
 
   await server.start();
