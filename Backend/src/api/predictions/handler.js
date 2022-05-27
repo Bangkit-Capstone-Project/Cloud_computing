@@ -13,9 +13,9 @@ class PredictionsHandler {
   async getRicePredictionHandler(request, h) {
     try {
       const { data } = request.payload;
-      this._validator.validatePredictionPayload(data.hapi.headers);
+      this._validator.validatePredictionPayload(request.payload);
 
-      const result = await this._service.getRicePrediction(data, data.hapi);
+      const result = await this._service.getRicePrediction(request.payload);
 
       const response = h.response({
         status: 'success',

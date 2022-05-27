@@ -5,12 +5,6 @@ const routes = (handler) => [
     handler: handler.getRicePredictionHandler,
     options: {
       auth: 'tanaminapp_jwt',
-      payload: {
-        allow: 'multipart/form-data',
-        maxBytes: 10000000,
-        output: 'stream',
-        multipart: true,
-      },
     },
   },
   {
