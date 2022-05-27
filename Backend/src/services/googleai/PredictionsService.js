@@ -66,7 +66,7 @@ class PredictionsService{
     // const predictionResult = predictionResponse.predictions;
     const created_at = new Date().toISOString();
     const result = {
-      image_url: `https://storage.googleapis.com/tanaminapp-images/ssss`,
+      image_url: imgUrl,
       accuracy: max,
       plant_name: "Rice",
       diseases_name: labels[maxIndex],
