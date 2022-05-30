@@ -74,6 +74,7 @@ class PredictionsService{
       created_at: created_at
     };
 
+    
     return mapPredictionsDBtoModel(result);
   }
 

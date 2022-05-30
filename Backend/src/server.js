@@ -19,21 +19,21 @@ const classifications = require('./api/classifications');
 const ClassificationsService = require('./services/googleai/ClassificationsService');
 const ClassificationValidator = require('./validator/classifications');
 
-const diseases = require('./api/Diseases');
+const diseases = require('./api/diseases');
 const DiseasesService = require('./services/postgres/DiseasesService');
 const DiseasesValidator = require('./validator/diseases');
 
-const plants = require('./api/Plants');
+const plants = require('./api/plants');
 const PlantsService = require('./services/postgres/PlantsService');
 const PlantsValidator = require('./validator/plants');
 
-const vegetables = require('./api/Vegetables');
+const vegetables = require('./api/vegetables');
 const VegetablesService = require('./services/postgres/VegetablesService');
 const VegetablesValidator = require('./validator/vegetables');
 
 const predictions = require('./api/predictions');
 const PredictionsService = require('./services/googleai/PredictionsService');
-const PredictionValidator = require('./validator/Predictions');
+const PredictionValidator = require('./validator/predictions');
 
 const historys = require('./api/historys');
 const HistorysService = require('./services/postgres/HistorysService');
