@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Bangkit-Capstone-Project/Cloud_computing#readme",
   "dependencies": {
+    "@google-cloud/storage": "^6.0.1",
     "@hapi/hapi": "^20.2.2",
     "@hapi/jwt": "^2.1.1",
     "bcrypt": "^5.0.1",

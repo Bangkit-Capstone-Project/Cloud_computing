@@ -39,6 +39,12 @@ const historys = require('./api/historys');
 const HistorysService = require('./services/postgres/HistorysService');
 const HistoryValidator = require('./validator/historys');
 
+// upload files
+const uploads = require('./api/uploads');
+const StorageService = require('./services/storage/StorageService');
+const UploadsValidator = require('./validator/uploads');
+
+
 const init = async () => {
   const usersService = new UsersService();
   const authenticationsService = new AuthenticationsService();
@@ -48,6 +54,7 @@ const init = async () => {
   const vegetablesService = new VegetablesService();
   const predictionsService = new PredictionsService();
   const historysService = new HistorysService();
+  const storageService = new StorageService();
 
   const server = new Hapi.Server({
     port: process.env.PORT,
@@ -143,7 +150,14 @@ const init = async () => {
         plantsService,
         validator: HistoryValidator,
       },
-    }
+    },
+    {
+      plugin: uploads,
+      options: {
+        service: storageService,
+        validator: UploadsValidator,
+      },
+    },
   ]);
 
   await server.start();
