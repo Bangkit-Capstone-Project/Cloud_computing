@@ -15,7 +15,11 @@ class PredictionsHandler {
       const { data } = request.payload;
       this._validator.validatePredictionPayload(request.payload);
 
-      const result = await this._service.getRicePrediction(request.payload);
+      const {
+        id: credentialsId
+      } = request.auth.credentials;
+
+      const result = await this._service.getRicePrediction(request.payload, credentialsId);
 
       const response = h.response({
         status: 'success',
@@ -35,13 +39,17 @@ class PredictionsHandler {
   async getCassavaPredictionHandler(request, h) {
     try {
       const { data } = request.payload;
-      this._validator.validatePredictionPayload(data.hapi.headers);
+      this._validator.validatePredictionPayload(request.payload);
 
-      const result = await this._service.getCassavaPrediction(data, data.hapi);
+      const {
+        id: credentialsId
+      } = request.auth.credentials;
+
+      const result = await this._service.getRicePrediction(request.payload, credentialsId);
 
       const response = h.response({
         status: 'success',
-        message: 'Gambar cassava berhasil diprediksi',
+        message: 'Gambar padi berhasil diprediksi',
         data: {
           result,
         }

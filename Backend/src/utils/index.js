@@ -18,6 +18,7 @@ const mapPredictionsDBtoModel = ({
   plant_name,
   diseases_name,
   description,
+  history_id,
   created_at
 }) => ({
   imageUrl: image_url,
@@ -25,6 +26,7 @@ const mapPredictionsDBtoModel = ({
   plantName: plant_name,
   diseasesName: diseases_name,
   description,
+  historyId: history_id,
   createdAt: created_at
 });
 

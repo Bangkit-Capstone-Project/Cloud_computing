@@ -52,7 +52,7 @@ class PlantsHandler {
 
       const response = h.response({
         status: 'success',
-        message: 'Disease berhasil ditambahkan',
+        message: 'Plants berhasil ditambahkan',
         data: {
           plantId,
         }

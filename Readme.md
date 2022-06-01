@@ -18,7 +18,7 @@ Tanamin Web Service is a web service that allows you to predict the disease of p
 
 The first thing you need to know is that this service is using authentication to access each service. You need to login to access the service. The login is using username and password. You can register on the registration service. Please don't spam the registration service because it will make the registration service slow. If you have some idea to secure this service, please contact me.
 
-> Base url of this service is: http://localhost:8080/
+> Base url of this service is: http://localhost:5000/
 
 The service available:
 

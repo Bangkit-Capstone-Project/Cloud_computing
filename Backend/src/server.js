@@ -52,8 +52,8 @@ const init = async () => {
   const diseasesService = new DiseasesService();
   const plantsService = new PlantsService();
   const vegetablesService = new VegetablesService();
-  const predictionsService = new PredictionsService();
   const historysService = new HistorysService();
+  const predictionsService = new PredictionsService(diseasesService, historysService);
   const storageService = new StorageService();
 
   const server = new Hapi.Server({

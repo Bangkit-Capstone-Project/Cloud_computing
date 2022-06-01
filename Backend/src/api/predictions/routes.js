@@ -13,12 +13,6 @@ const routes = (handler) => [
     handler: handler.getCassavaPredictionHandler,
     options: {
       auth: 'tanaminapp_jwt',
-      payload: {
-        allow: 'multipart/form-data',
-        maxBytes: 10000000,
-        output: 'stream',
-        multipart: true,
-      },
     },
   }
 ];
