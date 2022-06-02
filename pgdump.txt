@@ -1,0 +1,1 @@
+pg_dump --schema-only -h ec2-52-3-2-245.compute-1.amazonaws.com -U clmcsjydnnlsvd -f public dbname

@@ -113,10 +113,16 @@ class PredictionsService{
 
   async getTomatoPrediction({imgUrl, endpoint}, credentialsId){
     const labels = [
-      'disease-3fInBMJ7IOL3k0Gh',
-      'disease-obI2baHYEMgQRL8o',
-      'disease-X9aS15TvpITfrVzq',
-      'disease-wPIHSPX886haLugJ',
+      'disease-vZpS9RThS_L6FziJ', // bacterial spot
+      'disease-qqLTTorm83QT7lSl', // early blight
+      'disease-k0cGrVkRQ0fhAX8z', // late blight
+      'disease-Qi4DZAVae9Gd8C4I', // lear mold
+      'disease-WQ6y7YNOeL2g1Ltp', // septoria
+      'disease-d2RgY-M9UPxvvclu', // spider mites
+      'disease-tQdT3sVH4MwyPpnZ', // target spot
+      'disease-DPaIS5cHpCQwkfnZ', // ylcv
+      'disease-eu137eohovrOuNTf', // mosaic
+      'disease-H19Ajt45Joo0qWx8', // healthy
     ];
 
     let predictionResult = await fetch(

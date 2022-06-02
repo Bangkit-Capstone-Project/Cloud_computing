@@ -19,11 +19,22 @@ class ClassificationsService{
 
   async getVegetableClassification({imgUrl, endpoint}, credentialsId){
     const labels = [
-      'disease-E-uDF5xRJ0M-wxGR',
-      'disease-APmrq1QkwnedtJRt',
-      'disease-5IxgTua0P3ejwHru',
-      'disease-MFExj2F2Ph2GOWjf',
-      'disease-JgHRcz8HrGCacKc_'
+      'vegetable-hIT14f3jyx0SJbgD', //Edamame
+      'vegetable-S4bivE_zFBRr6Gpb', //Pare
+      'vegetable-I8HtKbRZrku6Gl1E', //Labu Air
+      'vegetable-3rAnbnWi65iaCYJL', //Terong Hijau
+      'vegetable-RMf-KqBQT4Iwt1po', //Brokoli
+      'vegetable-czhGlbiXTzThU_iT', //Kubis
+      'vegetable-ufr78NuZcmK1tbHs', //Paprika
+      'vegetable-tta8kjmyxxtrxT2e', //Wortel
+      'vegetable-FkxmlNt0PbhlHDZK', //Kembang Kol
+      'vegetable-nImUva4N0g-B4V97', //Mentimun
+      'vegetable-7yMJysSwTQ0CamPx', //Pepaya
+      'vegetable-i-8n7Epfvcp9TrVx', //Kentang
+      'vegetable-jpeNhe3t2NYm1z5s', //Labu
+      'vegetable-1TTh89D6NWhR6k8U', //Lobak
+      'vegetable-uW6whzXRU3OHM6bC', //Tomat
+      '',
     ];
 
     let predictionResult = await fetch(
@@ -35,17 +46,17 @@ class ClassificationsService{
       }
     ).then(res => res.text());
     const predictions = JSON.parse(predictionResult)[0];
-    let max = predictions[0];
+    let max = predictions[0].toFixed(8);
     let maxIndex = 0;
     for(let i=0;i<predictions.length;i++){
-      if(predictions[i]>max){
-          max=predictions[i];
+      if(predictions[i].toFixed(8) > max){
+          max=predictions[i].toFixed(8);
           maxIndex=i;
         }
     }
-    
+
     // let max = 100;
-    const vegetable = await this._vegetablesService.getVegetableById("vegetable-xJAeeyilWzeg_5aU");
+    const vegetable = await this._vegetablesService.getVegetableById(labels[maxIndex]);
     const created_at = new Date().toISOString();
     const result = {
       image_url: imgUrl,
