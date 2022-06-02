@@ -1,4 +1,3 @@
-cat <<EOF > Dockerfile
 # Use the official Node image.
 # https://hub.docker.com/_/node
 FROM node:14-alpine
@@ -15,5 +14,4 @@ ENV PORT 8080
 EXPOSE $PORT
 
 # Run the web service on container startup.
-CMD ["npm", "run", "start"]
-EOF
+CMD ["npm", "run", "start-prod"]
