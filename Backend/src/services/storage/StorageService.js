@@ -3,7 +3,7 @@ const NotFoundError = require('../../exceptions/NotFoundError');
 
 class StorageService {
   constructor() {
-    const serviceAccount = require('./tanamin-fe8e3a2b9ba2.json');
+    const serviceAccount = require('./tanamin-68de16fa8772.json');
     const storage = new Storage({
       keyFile: serviceAccount,
       projectId: 'tanamin',

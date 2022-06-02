@@ -1,4 +1,3 @@
-const { nanoid } = require('nanoid');
 const { Pool } = require('pg');
 const { mapPredictionsDBtoModel } = require('../../utils');
 const fetch = require('node-fetch');
@@ -149,7 +148,7 @@ class PredictionsService{
     const result = {
       image_url: imgUrl,
       accuracy: max,
-      plant_name: "Cassava",
+      plant_name: "Tomato",
       diseases_name: disease.name,
       description: disease.description,
       history_id: history,

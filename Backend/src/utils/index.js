@@ -1,13 +1,13 @@
 const mapClassificationsDBtoModel = ({
   image_url,
   accuracy,
-  name,
+  vegetable_name,
   description,
   created_at
 }) => ({
   imageUrl: image_url,
   accuracy,
-  plantName: name,
+  vegetableName: vegetable_name,
   description,
   createdAt: created_at
 });

@@ -11,10 +11,13 @@ class ClassificationHandler {
 
   async getClassificationHandler(request, h) {
     try {
-      const { data } = request.payload;
-      this._validator.validateClassificationPayload(data.hapi.headers);
+      this._validator.validateClassificationPayload(request.payload);
 
-      const result = await this._service.getClassification(data, data.hapi);
+      const {
+        id: credentialsId
+      } = request.auth.credentials;
+
+      const result = await this._service.getVegetableClassification(request.payload, credentialsId);
 
       const response = h.response({
         status: 'success',

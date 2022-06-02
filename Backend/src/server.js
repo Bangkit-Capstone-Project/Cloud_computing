@@ -48,11 +48,11 @@ const UploadsValidator = require('./validator/uploads');
 const init = async () => {
   const usersService = new UsersService();
   const authenticationsService = new AuthenticationsService();
-  const classificationsService = new ClassificationsService();
   const diseasesService = new DiseasesService();
   const plantsService = new PlantsService();
   const vegetablesService = new VegetablesService();
   const historysService = new HistorysService();
+  const classificationsService = new ClassificationsService(vegetablesService);
   const predictionsService = new PredictionsService(diseasesService, historysService);
   const storageService = new StorageService();
 
