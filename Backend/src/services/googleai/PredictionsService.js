@@ -103,7 +103,53 @@ class PredictionsService{
     const result = {
       image_url: imgUrl,
       accuracy: max,
-      plant_name: "Rice",
+      plant_name: "Cassava",
+      diseases_name: disease.name,
+      description: disease.description,
+      history_id: history,
+      created_at: created_at
+    };
+    return mapPredictionsDBtoModel(result);
+  }
+
+  async getTomatoPrediction({imgUrl, endpoint}, credentialsId){
+    const labels = [
+      'disease-3fInBMJ7IOL3k0Gh',
+      'disease-obI2baHYEMgQRL8o',
+      'disease-X9aS15TvpITfrVzq',
+      'disease-wPIHSPX886haLugJ',
+    ];
+
+    let predictionResult = await fetch(
+      "https://us-central1-tanamin.cloudfunctions.net/function-1",
+      {
+        method: "POST",
+        body: '{"imgUrl": "' + imgUrl + '", "endpoint": "' + endpoint + '"}',
+        headers: {'Content-Type': 'application/json'}
+      }
+    ).then(res => res.text());
+    const predictions = JSON.parse(predictionResult)[0];
+    let max = predictions[0];
+    let maxIndex = 0;
+    for(let i=0;i<predictions.length;i++){
+      if(predictions[i]>max){
+          max=predictions[i];
+          maxIndex=i;
+        }
+    }
+   
+    const disease = await this._diseasesService.getDiseaseById(labels[maxIndex]);
+    const history = await this._historysService.addPredictionHistorys("plant-nFzx8Yhxa6dEWjvi",
+      disease.id,
+      credentialsId,
+      max,
+      imgUrl);
+
+    const created_at = new Date().toISOString();
+    const result = {
+      image_url: imgUrl,
+      accuracy: max,
+      plant_name: "Cassava",
       diseases_name: disease.name,
       description: disease.description,
       history_id: history,

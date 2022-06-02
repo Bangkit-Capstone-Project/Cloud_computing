@@ -14,7 +14,15 @@ const routes = (handler) => [
     options: {
       auth: 'tanaminapp_jwt',
     },
-  }
+  },
+  {
+    method: 'POST',
+    path: '/predictions/tomato',
+    handler: handler.getTomatoPredictionHandler,
+    options: {
+      auth: 'tanaminapp_jwt',
+    },
+  },
 ];
 
 module.exports = routes;
