@@ -1,3 +1,5 @@
 Backend/src/services/storage/tanamin-68de16fa8772.json
 Backend/tanamin-81290c7dc095.json
 .gitignore
+
+Backend/.env

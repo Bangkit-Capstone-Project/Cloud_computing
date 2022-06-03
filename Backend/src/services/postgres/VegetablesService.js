@@ -8,10 +8,11 @@ class VegetablesService {
   constructor() {
     if (process.env.NODE_ENV === 'production') {
       this._pool = new Pool({
-        connectionString: process.env.PGURI,
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        "host":process.env.PGHOST,
+        "database":process.env.PGDATABASE,
+        "port":"5432",
+        "user":process.env.PGUSER,
+        "password":process.env.PGPASSWORD
       });
     } else {
       this._pool = new Pool();
@@ -19,7 +20,7 @@ class VegetablesService {
   }
 
   async getVegetables() {
-    const result = await this._pool.query('SELECT id, name, description, image_url FROM vegetables');
+    const result = await this._pool.query('SELECT id, name, description, image_url FROM vegetables').catch(error => console.error(`error in pool.query: ${error}`));
     return result.rows.map(mapVegetableDBtoModel);
   }
 

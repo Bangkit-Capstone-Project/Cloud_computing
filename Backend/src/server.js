@@ -57,7 +57,7 @@ const init = async () => {
   const storageService = new StorageService();
 
   const server = new Hapi.Server({
-    port: process.env.PORT,
+    port: process.env.PORT || 8080,
     host: process.env.HOST !== 'production' ? 'localhost' : '0.0.0.0',
     routes: {
       cors: {

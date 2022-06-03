@@ -8,10 +8,11 @@ class PlantsService {
   constructor() {
     if (process.env.NODE_ENV === "production") {
       this._pool = new Pool({
-        connectionString: process.env.PGURI,
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        "host":process.env.PGHOST,
+        "database":process.env.PGDATABASE,
+        "port":"5432",
+        "user":process.env.PGUSER,
+        "password":process.env.PGPASSWORD
       });
     } else {
       this._pool = new Pool();
