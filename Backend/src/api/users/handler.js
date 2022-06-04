@@ -76,7 +76,7 @@ class UsersHandler {
 
   async getUsersByUsernameHandler(request, h) {
     try {
-      const { username = '' } = request.query;
+      const { username } = request.query;
       const user = await this._service.getUsersByUsername(username);
       return {
         status: 'success',

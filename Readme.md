@@ -48,9 +48,17 @@ The service available:
 
 # Quick Look
 
-#### Built With
+## Architecture
+
+<p align="center">
+  <img src="image/cloud architecture.png" alt="Konva logo" />
+</p>
 
 # Authentications
+
+This service is using token for authentication. You should have an account to access this service. First if you don't have an account, create a new account. Then, create a token for authentication. It's like login, you need to authenticate yourself with username and password. If the autentication is valid, you will get a token. You can use this token to access the service. If dont, you will get a error message. 
+
+The token given is accessToken and refreshToken. The refreshToken is used to refresh the token. The accessToken is valid for 30 minutes. If you want to refresh the token, you need to send the refreshToken to the service. If the refreshToken is valid, you will get a new accessToken. If the refreshToken is not valid, you will get a error message.
 
 # Instructions
 
