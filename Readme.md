@@ -36,15 +36,27 @@ The service available:
 - Predictions
   <pre>POST /predictions/cassava</pre>
   <pre>POST /predictions/rice</pre>
+  <pre>POST /predictions/tomato</pre>
 
 - History
-  <pre>GET  /histories</pre>
-  <pre>GET  /histories/{historyId}</pre>
+  <pre>GET  /predict/historys/</pre>
+  <pre>GET  /predict/historys/{historyId}</pre>
+  <pre>GET  /predict/historys/plant/{plantId}/</pre>
+  <pre>GET  /predict/historys/plant/{plantId}/disease/{diseaseId}</pre>
   <pre>POST /histories</pre>
   <pre>DEL  /histories/{historyId}</pre>
 
 - Classifications
   <pre>POST /classifications/vegetable</pre>
+
+- Plant
+  <pre>GET   /diseases</pre>
+  <pre>POST  /diseases</pre>
+  <pre>PUT   /diseases/{diseaseId}</pre>
+  <pre>GET   /diseases/{diseaseId}</pre>
+- Diseases
+  
+- Vegetables
 
 # Quick Look
 
@@ -62,18 +74,45 @@ The token given is accessToken and refreshToken. The refreshToken is used to ref
 
 # Instructions
 
-## X Service
+## Predictions Service
+The predictions service is using imgUrl and endpoint id to retrieve predictions. The endpoint id is used to define what model to be used. So you should know what endpoint id you want to use. The endpoint id is:
+cassava leaf : 4257194673539383296
+rice leaf : 2528938316535955456
+tomato leaf : 9197643464764817408
 
-## Y service
+For the imgUrl, it is image url that publicly accessible. The image should be in image format like (jpg, png, jpeg, etc.). The image url can be obtained when you upload your image to upload picture service, or search on google.
+
+If the prediction is successful, you will get a json object. The json object contains the prediction result. The prediction result contains the highest probability and the predicted class, with some additional information related to the class. The result will be stored as a history object.
+
+## Classifications service
+This service is like predictions service withoud storing the result as a history object. The result will be lost imedietely after the process.
 
 # Environment
 
 In order to run this project, you need to configure the following environment variables:
 
 ```bash
-A={YourA}
-B={YourB}
-C={YourC}
+#development
+HOST= {your application host, localhost if development}
+NODE_ENV = {your environment server}
+
+PORT= {your server port}
+
+# node-postgres configuration
+PGUSER= {your database username}
+PGHOST= {your database host}
+PGPASSWORD= {your database password}
+PGDATABASE= {your database name}
+PGPORT= {your database port}
+PGURI= {your database uri if available}
+
+# JWT Token Key
+ACCESS_TOKEN_KEY= {define your own token key}
+REFRESH_TOKEN_KEY= {define your own refresh token}
+ACCESS_TOKEN_AGE = {define how long the access token is valid}
+
+# AI platform
+PROJECT_ID={your project id}
 
 ```
 
@@ -99,9 +138,9 @@ Then you can use the following image to create your own database:
 
 # Testing
 
-This Web service uses Katalon Studio and Postman to test.
+This Web service uses Postman to test.
 
-- You can download the Postman documentation [here](https://www.getpostman.com/docs/).
+- You can download the Postman documentation [here](https://documenter.getpostman.com/view/12239151/Uz5DrdGT).
 
 If you want to contribute to this project, please contact me.
 
