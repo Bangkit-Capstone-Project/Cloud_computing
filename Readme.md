@@ -165,7 +165,7 @@ I'd be happy to review any pull requests that may better the TanamIn project, in
 ## Contributors
 
 ### CC Member (Master Contributor)
-
+CC member is responsible for the development of the API service and deployment of the model. In sort, in this project CC is responsible for Backend, infrastructure, and DevOps.
 #### Individuals
 
 <a href="https://github.com/Bangkit-Capstone-Project/Cloud_computing/graphs/contributors">
