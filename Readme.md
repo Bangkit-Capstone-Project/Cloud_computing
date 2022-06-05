@@ -50,13 +50,25 @@ The service available:
   <pre>POST /classifications/vegetable</pre>
 
 - Plant
+  <pre>GET   /plants</pre>
+  <pre>POST  /plants</pre>
+  <pre>PUT   /plants/{plantId}</pre>
+  <pre>GET   /plants/{plantId}</pre>
+  <pre>DEL   /plants/{plantId}</pre> 
+
+- Diseases
   <pre>GET   /diseases</pre>
   <pre>POST  /diseases</pre>
   <pre>PUT   /diseases/{diseaseId}</pre>
   <pre>GET   /diseases/{diseaseId}</pre>
-- Diseases
-  
+  <pre>DEL   /diseases/{diseaseId}</pre>
+
 - Vegetables
+  <pre>GET   /vegetables</pre>
+  <pre>POST  /vegetables</pre>
+  <pre>PUT   /vegetables/{vegetableId}</pre>
+  <pre>GET   /vegetables/{vegetableId}</pre>
+  <pre>DEL   /vegetables/{vegetableId}</pre>
 
 # Quick Look
 
@@ -76,9 +88,9 @@ The token given is accessToken and refreshToken. The refreshToken is used to ref
 
 ## Predictions Service
 The predictions service is using imgUrl and endpoint id to retrieve predictions. The endpoint id is used to define what model to be used. So you should know what endpoint id you want to use. The endpoint id is:
-cassava leaf : 4257194673539383296
-rice leaf : 2528938316535955456
-tomato leaf : 9197643464764817408
+- cassava leaf : 4257194673539383296
+- rice leaf : 2528938316535955456
+- tomato leaf : 9197643464764817408
 
 For the imgUrl, it is image url that publicly accessible. The image should be in image format like (jpg, png, jpeg, etc.). The image url can be obtained when you upload your image to upload picture service, or search on google.
 
