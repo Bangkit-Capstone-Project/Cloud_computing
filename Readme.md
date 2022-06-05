@@ -98,6 +98,8 @@ If the prediction is successful, you will get a json object. The json object con
 
 ## Classifications service
 This service is like predictions service withoud storing the result as a history object. The result will be lost imedietely after the process.
+The endpoint id is: 
+- vegetables : 5666821356906348544
 
 # Environment
 
