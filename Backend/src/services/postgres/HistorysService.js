@@ -46,7 +46,7 @@ class HistorysService {
   async getPredictionHistorys(credentialsId) {
     const query = {
       text: `SELECT predict_results.id,
-      plants.name as plant_name, plants.description as plant_description,
+      plants.name as plant_name,
       diseases.name as disease_name, diseases.description as disease_description,
       accuracy, predict_results.image_url, predict_results.created_at
       FROM predict_results
@@ -66,7 +66,7 @@ class HistorysService {
   async getPredictionHistorysByPlantId(plantId, credentialsId) {
     const query = {
       text: `SELECT predict_results.id,
-      plants.name as plant_name, plants.description as plant_description,
+      plants.name as plant_name,
       diseases.name as disease_name, diseases.description as disease_description,
       accuracy, predict_results.image_url, predict_results.created_at
       FROM predict_results
@@ -86,7 +86,7 @@ class HistorysService {
   async getPredictionHistorysByPlantIdDiseaseId(plantId, diseaseId, credentialsId){
     const query = {
       text: `SELECT predict_results.id,
-      plants.name as plant_name, plants.description as plant_description,
+      plants.name as plant_name,
       diseases.name as disease_name, diseases.description as disease_description,
       accuracy, predict_results.image_url, predict_results.created_at
       FROM predict_results
@@ -106,7 +106,7 @@ class HistorysService {
  async getPredictionHistoryById(id){
     const query = {
       text: `SELECT predict_results.id,
-      plants.name as plant_name, plants.description as plant_description,
+      plants.name as plant_name,
       diseases.name as disease_name, diseases.description as disease_description,
       accuracy, predict_results.image_url, predict_results.created_at
       FROM predict_results
