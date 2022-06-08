@@ -84,7 +84,11 @@ class HistorysService {
 
  async getPredictionHistoryById(id){
     const query = {
-      text: 'SELECT id, user_id, plant_id, disease_id, accuracy, image_url, created_at FROM predict_results WHERE id = $1',
+      text: `SELECT predict_results.id, plants.name as plant_name, diseases.name as disease_name, accuracy, predict_results.image_url, predict_results.created_at 
+      FROM predict_results
+      LEFT JOIN plants ON predict_results.plant_id = plants.id
+      LEFT JOIN diseases ON predict_results.disease_id = diseases.id
+      WHERE predict_results.id = $1`,
       values: [id],
     };
 

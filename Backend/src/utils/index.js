@@ -71,6 +71,8 @@ const mapPredictHistoryDBtoModel = ({
   user_id,
   plant_id,
   disease_id,
+  plant_name,
+  disease_name,
   accuracy,
   image_url,
   created_at
@@ -79,6 +81,8 @@ const mapPredictHistoryDBtoModel = ({
   userId: user_id,
   plantId: plant_id,
   diseaseId: disease_id,
+  plantName: plant_name,
+  diseasesName: disease_name,
   accuracy,
   imageUrl: image_url,
   createdAt: created_at
