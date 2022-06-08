@@ -69,20 +69,20 @@ const mapVegetableDBtoModel = ({
 const mapPredictHistoryDBtoModel = ({
   id,
   user_id,
-  plant_id,
-  disease_id,
   plant_name,
+  plant_description,
   disease_name,
+  disease_description,
   accuracy,
   image_url,
   created_at
 }) => ({
   id,
   userId: user_id,
-  plantId: plant_id,
-  diseaseId: disease_id,
   plantName: plant_name,
+  plantDescription: plant_description,
   diseasesName: disease_name,
+  diseasesDescription: disease_description,
   accuracy,
   imageUrl: image_url,
   createdAt: created_at

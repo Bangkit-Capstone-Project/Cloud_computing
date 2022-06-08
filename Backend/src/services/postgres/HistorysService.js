@@ -45,7 +45,14 @@ class HistorysService {
 
   async getPredictionHistorys(credentialsId) {
     const query = {
-      text: 'SELECT id, plant_id, disease_id, accuracy, image_url, created_at FROM predict_results WHERE user_id = $1',
+      text: `SELECT predict_results.id,
+      plants.name as plant_name, plants.description as plant_description,
+      diseases.name as disease_name, diseases.description as disease_description,
+      accuracy, predict_results.image_url, predict_results.created_at
+      FROM predict_results
+      LEFT JOIN plants ON predict_results.plant_id = plants.id
+      LEFT JOIN diseases ON predict_results.disease_id = diseases.id
+      WHERE user_id = $1`,
       values: [credentialsId],
     };
 
@@ -58,7 +65,14 @@ class HistorysService {
 
   async getPredictionHistorysByPlantId(plantId, credentialsId) {
     const query = {
-      text: 'SELECT id, plant_id, disease_id, accuracy, image_url, created_at FROM predict_results WHERE plant_id = $1 AND user_id = $2',
+      text: `SELECT predict_results.id,
+      plants.name as plant_name, plants.description as plant_description,
+      diseases.name as disease_name, diseases.description as disease_description,
+      accuracy, predict_results.image_url, predict_results.created_at
+      FROM predict_results
+      LEFT JOIN plants ON predict_results.plant_id = plants.id
+      LEFT JOIN diseases ON predict_results.disease_id = diseases.id
+      WHERE plant_id = $1 AND user_id = $2`,
       values: [plantId, credentialsId],
     };
 
@@ -71,7 +85,14 @@ class HistorysService {
 
   async getPredictionHistorysByPlantIdDiseaseId(plantId, diseaseId, credentialsId){
     const query = {
-      text: 'SELECT id, plant_id, disease_id, accuracy, image_url, created_at FROM predict_results WHERE plant_id = $1 AND disease_id = $2 AND user_id = $3',
+      text: `SELECT predict_results.id,
+      plants.name as plant_name, plants.description as plant_description,
+      diseases.name as disease_name, diseases.description as disease_description,
+      accuracy, predict_results.image_url, predict_results.created_at
+      FROM predict_results
+      LEFT JOIN plants ON predict_results.plant_id = plants.id
+      LEFT JOIN diseases ON predict_results.disease_id = diseases.id
+      WHERE plant_id = $1 AND disease_id = $2 AND user_id = $3`,
       values: [plantId, diseaseId, credentialsId],
     };
 
@@ -84,7 +105,10 @@ class HistorysService {
 
  async getPredictionHistoryById(id){
     const query = {
-      text: `SELECT predict_results.id, plants.name as plant_name, diseases.name as disease_name, accuracy, predict_results.image_url, predict_results.created_at 
+      text: `SELECT predict_results.id,
+      plants.name as plant_name, plants.description as plant_description,
+      diseases.name as disease_name, diseases.description as disease_description,
+      accuracy, predict_results.image_url, predict_results.created_at
       FROM predict_results
       LEFT JOIN plants ON predict_results.plant_id = plants.id
       LEFT JOIN diseases ON predict_results.disease_id = diseases.id
